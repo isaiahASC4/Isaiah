@@ -1,0 +1,93 @@
+function setup() {
+    createCanvas(600, 400)
+    // frameRate(1)
+}
+
+var rectx = 290
+var bally = 360
+var shoot = 2
+var nsteps = 0;
+var x = 400;
+
+
+function draw() {
+    var y = 50;
+    background('blue')
+
+    var xMove = 0;
+    var totalMoves = 0;
+
+
+
+        fill('red')
+        background('blue')
+        rect(x, y, 25, 25);
+        rect(x + 50, y, 25, 25);
+        rect(x + 100, y, 25, 25);
+        rect(x + 150, y, 25, 25);
+        rect(x, y + 50, 25, 25);
+        rect(x + 50, y + 50, 25, 25);
+        rect(x + 100, y + 50, 25, 25);
+        rect(x + 150, y + 50, 25, 25);
+        fill('green')
+        rect(rectx, 350, 20, 40)
+        fill('red')
+        ball = ellipse(rectx + 11, bally, 10)
+
+        if (nsteps == 40) {
+            y = y + 25;
+            if (xMove == 0) {
+                xMove = 1;
+            }
+            else {
+                xMove = 0;
+            }
+            nsteps = 0;
+        }
+        if (xMove == 0) {
+            x = x - 10;
+        }
+        else {
+            x = x + 10;
+        }
+
+        //x= x-10;
+        totalMoves++;
+        nsteps++
+
+
+
+   
+
+    
+        if (shoot == 1) {
+            bally -= 10
+        }
+        if (bally <= 0) {
+            bally = 380
+            shoot = 2
+        }
+        if (keyIsDown(LEFT_ARROW)) {
+            rectx -= 5
+
+        }
+        if (keyIsDown(RIGHT_ARROW)) {
+            rectx += 5
+        }
+        if (rectx <= 0 || rectx > 560) {
+            if (keyIsDown(LEFT_ARROW)) {
+                rectx += 5
+            }
+            if (keyIsDown(RIGHT_ARROW)) {
+                rectx -= 5
+            }
+
+        }
+
+    }
+
+function mousePressed() {
+    shoot = 1
+}
+
+
